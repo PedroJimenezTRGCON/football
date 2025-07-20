@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: ecommerce
+    database: test2-407321
+    schema: test_dbt
+    tables:
+      - name: users
+        description: Tabla de usuarios en BigQuery
+        columns:
+          - name: id
+            description: Identificador único
+          - name: first_name
+            description: Nombre del usuario
+          - name: last_name
+            description: Apellido del usuario
