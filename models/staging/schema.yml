@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg_users
+    description: "Tabla staging de usuarios, aplica curado de datos básicos y tipado."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+          - unique
+
+      - name: email
+        description: "Correo electrónico del usuario."
+        tests:
+          - not_null
+
+      - name: created_at
+        description: "Fecha de creación del usuario."
+
+  - name: stg_orders
+    description: "Tabla staging de pedidos, normaliza fechas y estados."
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido."
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "Usuario asociado al pedido."
+        tests:
+          - not_null
+
+      - name: created_at
+        description: "Fecha en la que se creó el pedido."
+
+  - name: stg_order_items
+    description: "Tabla staging de líneas de pedido, valida relaciones con órdenes y productos."
+    columns:
+      - name: order_item_id
+        description: "Identificador único de la línea de pedido."
+        tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: "Pedido al que pertenece esta línea."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Producto vendido en esta línea."
+        tests:
+          - not_null
+
+      - name: sale_price
+        description: "Precio de venta del producto."
+        tests:
+          - not_null
