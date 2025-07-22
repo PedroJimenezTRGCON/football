@@ -7,10 +7,13 @@ sources:
     tables:
       - name: users
         description: Tabla de usuarios en BigQuery
-        columns:
-          - name: id
-            description: Identificador único
-          - name: first_name
-            description: Nombre del usuario
-          - name: last_name
-            description: Apellido del usuario
+      - name: distribution_centers
+        description: Tabla de centros de distribución en BigQuery
+      - name: orders
+        description: Tabla de pedidos de BigQuery
+      - name: order_items
+        description: Tabla de artículos de pedidos de BigQuery
+      - name: products
+        description: Tabla de productos de BigQuery
+      - name: inventory_items
+        description: Tabla de inventario de BigQuery
