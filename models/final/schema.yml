@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "Tabla dimensional de usuarios limpia y enriquecida."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+          - unique
+
+      - name: first_name
+        description: "Nombre del usuario."
+
+      - name: last_name
+        description: "Apellido del usuario."
+
+      - name: email
+        description: "Correo electrónico del usuario."
+        tests:
+          - not_null
+          - unique
+
+      - name: age
+        description: "Edad del usuario."
+
+      - name: gender
+        description: "Género del usuario."
+
+      - name: state
+        description: "Estado o región."
+
+      - name: city
+        description: "Ciudad."
+
+      - name: country
+        description: "País."
+
+      - name: created_at
+        description: "Fecha de creación del usuario."
+
+      - name: traffic_source
+        description: "Fuente de tráfico del usuario."
+
+  - name: fct_sales
+    description: "Tabla de hechos de ventas con métricas agregadas por usuario y fecha."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+
+      - name: order_date
+        description: "Fecha del pedido."
+        tests:
+          - not_null
+
+      - name: orders_count
+        description: "Número total de pedidos realizados."
+
+      - name: items_sold
+        description: "Número total de productos vendidos."
+
+      - name: total_revenue
+        description: "Ingresos totales generados."
+
+      - name: order_ids
+        description: "Lista de IDs de pedidos para ese usuario en la fecha (array)."

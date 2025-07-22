@@ -1,0 +1,66 @@
+version: 2
+
+models:
+  - name: int_orders_enriched
+    description: "Modelo enriquecido de pedidos con agregados y flags."
+    columns:
+      - name: order_id
+        description: "Identificador único del pedido."
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "Identificador del usuario que hizo el pedido."
+        tests:
+          - not_null
+
+      - name: status
+        description: "Estado del pedido."
+        tests:
+          - not_null
+
+      - name: total_items
+        description: "Número total de artículos en el pedido."
+
+      - name: total_amount
+        description: "Importe total del pedido."
+
+      - name: is_returned
+        description: "Flag que indica si el pedido fue devuelto."
+
+      - name: is_delivered
+        description: "Flag que indica si el pedido fue entregado."
+
+  - name: int_users_order_summary
+    description: "Resumen por usuario de pedidos, cantidades y gasto."
+    columns:
+      - name: user_id
+        description: "Identificador único del usuario."
+        tests:
+          - not_null
+          - unique
+
+      - name: first_name
+        description: "Nombre del usuario."
+
+      - name: last_name
+        description: "Apellido del usuario."
+
+      - name: email
+        description: "Correo electrónico del usuario."
+
+      - name: total_orders
+        description: "Total de pedidos realizados por el usuario."
+
+      - name: delivered_orders
+        description: "Pedidos entregados correctamente."
+
+      - name: returned_orders
+        description: "Pedidos devueltos."
+
+      - name: total_items_ordered
+        description: "Total de artículos pedidos."
+
+      - name: total_spent
+        description: "Total gastado por el usuario."
